@@ -2,7 +2,7 @@ import os
 import subprocess
 import json
 
-# Define the project structure
+# define the project structure
 project_structure = {
     "docs": {
         "ideas.md": ""
@@ -22,7 +22,7 @@ project_structure = {
             "style.css": ""
         }
     },
-    ".gitignore": "node_modules\n",  # Add "node_modules" to the .gitignore file
+    ".gitignore": "node_modules\n",  # add "node_modules" to .gitignore
     "README.md": ""
 }
 
@@ -30,18 +30,18 @@ def create_structure(base_path, structure):
     for name, value in structure.items():
         path = os.path.join(base_path, name)
         if isinstance(value, dict):
-            # Create directory and recursively create the structure
+            # create directory and recursively create the structure
             os.makedirs(path, exist_ok=True)
             create_structure(path, value)
         else:
-            # Create file and write content (empty or specified content)
+            # create file and write content
             with open(path, "w") as file:
                 file.write(value)
 
-# Get the name of the parent folder
+# get name of parent folder
 parent_folder_name = os.path.basename(os.getcwd())
 
-# Define the content for the index.html file
+# define content for index.html
 index_html_content = f"""<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -61,7 +61,7 @@ index_html_content = f"""<!DOCTYPE html>
 </html>
 """
 
-# Define the content for the package.json file
+# ddefine content for package.json
 package_json_content = {
     "name": parent_folder_name,
     "version": "1.0.0",
@@ -82,23 +82,23 @@ package_json_content = {
     }
 }
 
-# Make sure the script is running in the project folder
+# make sure the script is running in the project folder
 current_directory = os.getcwd()
 
-# Create the project structure in the current directory
+# create project structure in current directory
 create_structure(current_directory, project_structure)
 
-# Write the index.html file with the specified content
+# write index.html file with defined content
 index_html_path = os.path.join(current_directory, "index.html")
 with open(index_html_path, "w") as index_file:
     index_file.write(index_html_content)
 
-# Write the package.json file with the specified content
+# write package.json file with defined content
 package_json_path = os.path.join(current_directory, "package.json")
 with open(package_json_path, "w") as package_file:
     json.dump(package_json_content, package_file, indent=4)
 
-# Run npm install to install the devDependencies
+# run "npm install" to install devDependencies
 subprocess.run(["npm", "install"], check=True)
 
 print("Project structure created, index.html and package.json written, and devDependencies (SASS & Live-Server) installed successfully.")
