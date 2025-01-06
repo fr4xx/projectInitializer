@@ -10,6 +10,7 @@ This project initializer script sets up a basic web project structure with essen
 
 - Automatically creates the following directory structure:
 
+'''
 new-project/ \
 ├── docs/ \
 │ └── ideas.md \
@@ -27,7 +28,7 @@ new-project/ \
 ├── .gitignore \
 ├── package.json \
 └── README.md \
-
+'''
 
 - Generates a `package.json` file with the following:
 - Project dependencies: `sass` and `live-server` (dev dependencies)
