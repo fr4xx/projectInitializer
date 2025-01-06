@@ -101,4 +101,4 @@ with open(package_json_path, "w") as package_file:
 # Run npm install to install the devDependencies
 subprocess.run(["npm", "install"], check=True)
 
-print("Project structure created, index.html and package.json written, and devDependencies installed successfully.")
+print("Project structure created, index.html and package.json written, and devDependencies (SASS & Live-Server) installed successfully.")
