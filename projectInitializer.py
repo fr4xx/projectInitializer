@@ -22,7 +22,6 @@ project_structure = {
             "style.css": ""
         }
     },
-    "index.html": "",
     ".gitignore": "node_modules\n",  # Add "node_modules" to the .gitignore file
     "README.md": ""
 }
@@ -41,6 +40,26 @@ def create_structure(base_path, structure):
 
 # Get the name of the parent folder
 parent_folder_name = os.path.basename(os.getcwd())
+
+# Define the content for the index.html file
+index_html_content = f"""<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{parent_folder_name}</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="icon" href="src/media/img/icon.ico" type="image/x-icon">
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <main>
+        <h1>Welcome to My Website</h1>  
+    </main>
+  </body>
+</html>
+"""
 
 # Define the content for the package.json file
 package_json_content = {
@@ -69,6 +88,11 @@ current_directory = os.getcwd()
 # Create the project structure in the current directory
 create_structure(current_directory, project_structure)
 
+# Write the index.html file with the specified content
+index_html_path = os.path.join(current_directory, "index.html")
+with open(index_html_path, "w") as index_file:
+    index_file.write(index_html_content)
+
 # Write the package.json file with the specified content
 package_json_path = os.path.join(current_directory, "package.json")
 with open(package_json_path, "w") as package_file:
@@ -77,4 +101,4 @@ with open(package_json_path, "w") as package_file:
 # Run npm install to install the devDependencies
 subprocess.run(["npm", "install"], check=True)
 
-print("Project structure created, package.json written, and devDependencies installed successfully.")
+print("Project structure created, index.html and package.json written, and devDependencies installed successfully.")
