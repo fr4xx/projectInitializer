@@ -51,7 +51,7 @@ index_html_content = f"""<!DOCTYPE html>
     <title>{parent_folder_name}</title>
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="icon" href="src/media/img/icon.ico" type="image/x-icon">
-    <script src="index.js"></script>
+    <script src="src/js/index.js"></script>
   </head>
   <body>
     <main>
